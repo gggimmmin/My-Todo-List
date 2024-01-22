@@ -1,10 +1,12 @@
-import "./App.css";
+import styles from "./App.module.css";
 import Header from "./components/Header";
+import ToDoInput from "./components/ToDoInput";
 
 function App() {
   return (
-    <div>
+    <div className={styles.app}>
       <Header />
+      <ToDoInput />
     </div>
   );
 }
