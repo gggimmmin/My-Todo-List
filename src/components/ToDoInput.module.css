@@ -1,2 +1,32 @@
 .Formcontrols {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  height: 140px;
+  border: 2px solid gray;
+  border-radius: 15px;
+  background-color: whitesmoke;
+}
+
+.titleContainer {
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  padding: 15px;
+}
+
+.titleContainer input {
+  width: 330px;
+  height: 70px;
+  border-radius: 15px;
+  margin: 0 20px;
+}
+
+.addButton {
+  width: 150px;
+  height: 70px;
+  margin-right: 15px;
+  border-radius: 15px;
+  background-color: greenyellow;
 }
