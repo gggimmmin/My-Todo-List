@@ -29,6 +29,11 @@ const ToDoInput = () => {
     setContent("");
   };
 
+  const removeBtnHandler = (id) => {
+    const newList = list.filter((item) => item.id !== id);
+    setList(newList);
+  };
+
   return (
     <div>
       <div className={styles.Formcontrols}>
@@ -46,9 +51,12 @@ const ToDoInput = () => {
       </div>
       <div>
         {list.map((item) => (
-          <p key={item.id}>
-            {item.title}, {item.content}
-          </p>
+          <div>
+            <p key={item.id}>
+              {item.title}, {item.content}
+            </p>
+            <button onClick={() => removeBtnHandler(item.id)}>삭제</button>
+          </div>
         ))}
       </div>
     </div>
