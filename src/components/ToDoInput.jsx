@@ -3,7 +3,7 @@ import styles from "./ToDoInput.module.css";
 
 const ToDoInput = () => {
   const [list, setList] = useState([
-    { id: 1, title: "리액트공부", content: "리액트1강듣기" },
+    { id: 0, title: "", content: "", isDone: false },
   ]);
 
   const [title, setTitle] = useState("");
@@ -22,6 +22,7 @@ const ToDoInput = () => {
       id: list.length + 1,
       title: title,
       content: content,
+      isDone: false, // 초기에는 모두 진행중으로 설정
     };
 
     setList([...list, newList]);
@@ -31,6 +32,13 @@ const ToDoInput = () => {
 
   const removeBtnHandler = (id) => {
     const newList = list.filter((item) => item.id !== id);
+    setList(newList);
+  };
+
+  const toggleCompleteHandler = (id) => {
+    const newList = list.map((item) =>
+      item.id === id ? { ...item, isDone: !item.isDone } : item
+    );
     setList(newList);
   };
 
@@ -50,16 +58,41 @@ const ToDoInput = () => {
         </div>
       </div>
       <div>
-        {list.map((item) => (
-          <div>
-            <p key={item.id}>
-              {item.title}, {item.content}
-            </p>
-            <button onClick={() => removeBtnHandler(item.id)}>삭제</button>
-          </div>
-        ))}
+        <div>
+          <strong>Working...</strong>
+          {list
+            .filter((item) => !item.isDone)
+            .map((item) => (
+              <div key={item.id}>
+                <p>
+                  {item.title} {item.content}
+                </p>
+                <button onClick={() => removeBtnHandler(item.id)}>삭제</button>
+                <button onClick={() => toggleCompleteHandler(item.id)}>
+                  완료
+                </button>
+              </div>
+            ))}
+        </div>
+        <div>
+          <strong>Done!</strong>
+          {list
+            .filter((item) => item.isDone)
+            .map((item) => (
+              <div key={item.id}>
+                <p>
+                  {item.title} {item.content}
+                </p>
+                <button onClick={() => toggleCompleteHandler(item.id)}>
+                  취소
+                </button>
+                <button onClick={() => removeBtnHandler(item.id)}>삭제</button>
+              </div>
+            ))}
+        </div>
       </div>
     </div>
   );
 };
+
 export default ToDoInput;
