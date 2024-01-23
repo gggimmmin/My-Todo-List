@@ -22,7 +22,7 @@ const ToDoInput = () => {
       id: list.length + 1,
       title: title,
       content: content,
-      isDone: false, // 초기에는 모두 진행중으로 설정
+      isDone: false,
     };
 
     setList([...list, newList]);
@@ -59,7 +59,9 @@ const ToDoInput = () => {
       </div>
       <div>
         <div>
-          <strong>Working...</strong>
+          <h2>
+            <strong>Working...</strong>
+          </h2>
           {list
             .filter((item) => !item.isDone)
             .map((item) => (
@@ -75,7 +77,9 @@ const ToDoInput = () => {
             ))}
         </div>
         <div>
-          <strong>Done!</strong>
+          <h2>
+            <strong>Done!</strong>
+          </h2>
           {list
             .filter((item) => item.isDone)
             .map((item) => (
